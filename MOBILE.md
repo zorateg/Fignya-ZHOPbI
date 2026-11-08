@@ -58,6 +58,12 @@
 
 Можно и без GitHub Actions: `npx cap open android` откроет Android Studio, там **Build → Build APK(s)**.
 
+> **Если вкладка Actions пустая** (показывает рекламу GitHub Actions) — значит Actions
+> выключены для репозитория. Включите: **Settings → Actions → General → Allow all actions**,
+> либо на вкладке Actions нажмите «I understand my workflows, go ahead and enable them».
+> После этого workflow появится в списке слева. У меня нет прав администратора репозитория,
+> чтобы включить это за вас.
+
 ---
 
 ## 3. iPad / iPhone: что можно сделать прямо сейчас
