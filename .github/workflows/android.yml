@@ -54,6 +54,7 @@ jobs:
         with:
           distribution: temurin
           java-version: "21"
+          cache: gradle
 
       - name: Node.js
         uses: actions/setup-node@v4
@@ -149,6 +150,23 @@ jobs:
           path: dist/*
           if-no-files-found: error
           retention-days: 90
+
+      - name: Положить APK в ветку apk-latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          WORK="$(mktemp -d)"
+          cd "$WORK"
+          git init -q
+          git checkout -q --orphan apk-latest
+          cp "$GITHUB_WORKSPACE"/dist/*.apk .
+          printf '# APK «Фигня»\n\nЗдесь лежит последняя собранная сборка (ветка перезаписывается при каждой сборке).\n\nСкачать: кнопка **Code → Download ZIP** у этой ветки, внутри `fignya-debug.apk`.\n' > README.md
+          git add -A
+          git commit -q -m "APK: сборка ${GITHUB_RUN_NUMBER} ($(date -u +%FT%TZ))"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" apk-latest
 
       - name: Приложить APK к релизу (при пуше тега v*)
         if: startsWith(github.ref, 'refs/tags/v')
