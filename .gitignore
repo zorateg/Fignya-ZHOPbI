@@ -1,0 +1,25 @@
+# зависимости и сборка Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# окружение
+.env
+.env.local
+.env.*.local
+
+# системный мусор
+.DS_Store
+*.log
+
+# Android / iOS (тонкая настройка — в android/.gitignore и ios/.gitignore)
+android/keystore.properties
+android/app/release.keystore
+*.jks
+*.keystore
+!android/app/src/main/res/**/*.png
+
+# артефакты мобильных сборок
+build/
+dist/
