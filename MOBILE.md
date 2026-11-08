@@ -56,6 +56,9 @@
 Такой APK **работает и ставится**, но он подписан отладочным ключом: в Google Play его не примут.
 Для магазина нужен релизный ключ — раздел 4.
 
+**Готовая сборка всегда лежит в ветке [`apk-latest`](../../tree/apk-latest)** —
+её перезаписывает каждая сборка, скачать можно через **Code → Download ZIP** (внутри `fignya-debug.apk`).
+
 Можно и без GitHub Actions: `npx cap open android` откроет Android Studio, там **Build → Build APK(s)**.
 
 > **Если вкладка Actions пустая** (показывает рекламу GitHub Actions) — значит Actions
